@@ -55,9 +55,9 @@ int main() {
     std::cout << "3. Rest\n"; 
 
     // Rules: 
-    // Attack wins on Rest. (-10hp) 
-    // Defend ties with Attack. (0 hp) 
-    // Rest wins on Defend. (+5 hp) 
+    // 1. Attack wins on Rest. (-10hp) 
+    // 2. Defend ties with Attack. (0 hp) 
+    // 3. Rest wins on Defend. (+5 hp) 
     std::cout << "Your selection: ";
     std::cin >> action_user;
     std::cout << "You chose: " << action_user << "\n";
@@ -74,16 +74,55 @@ int main() {
     else if (action_user == 1 && action_fighter_rand == 3) {
         std::cout << "What a great punch! " << fighter << " loses 10 hp\n";
         hp_fighter = hp_fighter - 10;
-        std::cout << fighter << " has " << hp_fighter << " hp left..";
         }
     // Attack vs Attack 
     else if (action_user == 1 && action_fighter_rand == 1) {
-        std::cout << "Ooof, both of them are hitting themselves hard!\n";
+        std::cout << "Ooof, both of you are hitting yourselves hard!\n";
         hp_fighter = hp_fighter - 10;
         hp_user = hp_user - 10;
-        std::cout << fighter << " has " << hp_fighter << " hp left..";
-        std::cout << "You" << " have " << hp_user << " hp left..";
         }
+    // Defend vs Attack
+    else if (action_user == 2 && action_fighter_rand == 1) {
+        std::cout << fighter << " wanted to attack but it was properly defended by you...\n";
+    }
+    // Defend vs Defend
+    else if (action_user == 2 && action_fighter_rand == 2) {
+        std::cout << "Both are waiting to throw the punch!... who is going to take the initiative\n";
+    }
+    // Defend vs Rest
+    else if (action_user == 2 && action_fighter_rand == 3) {
+        std::cout << "You are very playing very careful\n";
+        std::cout << fighter << " had some time to rest...\n";
+        hp_fighter = hp_fighter + 5;
+    }
+    // Rest vs Attack
+    else if (action_user == 3 && action_fighter_rand == 1) {
+        std::cout << "What a great hit by " << fighter << " You lose 10hp\n"; 
+        hp_user = hp_user - 10; 
+    }
+    // Rest vs Defend
+    else if (action_user == 3 && action_fighter_rand == 2) {
+        std::cout << fighter << " is playing very careful\n"; 
+        std::cout << " You had some time to rest...\n"; 
+        hp_user = hp_user + 5; 
+    }
+    // Rest vs Rest
+    else if (action_user == 3 && action_fighter_rand == 3) {
+        std::cout <<" Both fighters are resting their arms a bit...\n"; 
+        hp_user = hp_user + 5;
+        hp_fighter = hp_fighter + 5; 
+    }
+
+    // small checks so that the hp doesnt go above 100 hp. 
+    if (hp_user >= 100) {
+      hp_user = 100; 
+    }
+    else if (hp_fighter >= 100) {
+      hp_user = 100;
+    }
+
+    std::cout << fighter << " has " << hp_fighter << " hp left..\n";
+    std::cout << "You have " << hp_user << " hp left..\n";
     }   
   
 
