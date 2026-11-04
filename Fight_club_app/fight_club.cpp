@@ -9,14 +9,13 @@ int main() {
   // FIGHT CLUB. 
 
   // random generator seed
-  std::srand(std::time(nullptr)); 
+  std::srand(std::time(nullptr)); // time(): changes once per second
 
   // Declaration variables
   int hp_user = 100; // health points of user 
-  int hp_fighter = 35; // health points of fighter 
+  int hp_fighter = 100; // health points of fighter 
   int action_user ; // user next action variable
   int fighter; // fighters available.
-  int action_fighter_rand = std::rand() % 3 + 1; // randomizer variable for fighter choosing. 
 
   // Fighters variables as string
   std::string Mike = "Mike Tyson";
@@ -47,6 +46,9 @@ int main() {
   }
 
   while (hp_user > 0 && hp_fighter > 0 ) { 
+    // Random variable declaration
+    int action_fighter_rand = std::rand() % 3 + 1; // randomizer variable for fighter choosing. 
+
     std::cout << "Choose your next move: \n";
     std::cout << "1. Attack\n"; 
     std::cout << "2. Defend\n"; 
@@ -70,7 +72,7 @@ int main() {
         }
     // Attack vs Rest
     else if (action_user == 1 && action_fighter_rand == 3) {
-        std::cout << "What a great punch! " << fighter << " loses -10 hp\n";
+        std::cout << "What a great punch! " << fighter << " loses 10 hp\n";
         hp_fighter = hp_fighter - 10;
         std::cout << fighter << " has " << hp_fighter << " hp left..";
         }
