@@ -114,11 +114,11 @@ int main() {
     }
 
     // small checks so that the hp doesnt go above 100 hp. 
-    if (hp_user >= 100) {
+    if (hp_user > 100) {
       hp_user = 100; 
     }
     // Second independent check for the hp
-    if (hp_fighter >= 100) {
+    if (hp_fighter > 100) {
       hp_fighter = 100;
     }
 
