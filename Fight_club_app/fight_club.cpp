@@ -117,8 +117,9 @@ int main() {
     if (hp_user >= 100) {
       hp_user = 100; 
     }
-    else if (hp_fighter >= 100) {
-      hp_user = 100;
+    // Second independent check for the hp
+    if (hp_fighter >= 100) {
+      hp_fighter = 100;
     }
 
     std::cout << fighter << " has " << hp_fighter << " hp left..\n";
