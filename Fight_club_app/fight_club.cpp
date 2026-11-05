@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <ctime>     
+#include <ctime>  
+#include <limits>   
 
 int main() {
   // Write code here 
@@ -14,7 +15,6 @@ int main() {
   // Declaration variables
   int hp_user = 100; // health points of user 
   int hp_fighter = 100; // health points of fighter 
-  int action_user ; // user next action variable
   int fighter; // fighters available.
 
   // Fighters variables as string
@@ -58,8 +58,22 @@ int main() {
     // 1. Attack wins on Rest. (-10hp) 
     // 2. Defend ties with Attack. (0 hp) 
     // 3. Rest wins on Defend. (+5 hp) 
+    int action_user ; // user next action variable
     std::cout << "Your selection: ";
     std::cin >> action_user;
+
+    // validation  checks 
+      // Detect whether the read failed 
+    if (std::cin.fail() || action_user > 3 || action_user < 1) {
+      std::cout << "Input is not a number!\n";
+      // Reset cin's error state. (like the pipe example, clear the bad flow inside)
+      std::cin.clear(); 
+      // Discard the bad input left in the buffer, everything up to the end of the line.
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+      continue; // skips to the next round, break leaves the loop completely. 
+    }
+      
+
     std::cout << "You chose: " << action_user << "\n";
 
     std::cout << fighter << " chose: " << action_fighter_rand << "\n";
