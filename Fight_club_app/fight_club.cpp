@@ -62,7 +62,7 @@ int main() {
     std::cout << "Your selection: ";
     std::cin >> action_user;
 
-    // validation  checks 
+    // validation check for bad input
       // Detect whether the read failed 
     if (std::cin.fail() || action_user > 3 || action_user < 1) {
       std::cout << "Input is not a number!\n";
@@ -72,6 +72,9 @@ int main() {
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
       continue; // skips to the next round, break leaves the loop completely. 
     }
+
+    // validation check for good input
+    
       
 
     std::cout << "You chose: " << action_user << "\n";
